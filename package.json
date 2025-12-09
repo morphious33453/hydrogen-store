@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "shopify hydrogen dev --codegen",
     "build": "shopify hydrogen build --codegen",
-    "build:vercel": "cross-env DEPLOY_TARGET=vercel shopify hydrogen build --codegen",
+    "build:vercel": "cross-env DEPLOY_TARGET=vercel shopify hydrogen build --codegen && rm -rf build && mv dist build",
     "preview": "npm run build && shopify hydrogen preview",
     "e2e": "npx playwright test",
     "e2e:ui": "npx playwright test --ui",
