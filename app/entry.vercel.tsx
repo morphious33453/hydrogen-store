@@ -15,8 +15,8 @@ export default function handleRequest(
         // Vercel apps might not have context.env explicitly here if not passed by the adapter
         // We can rely on process.env in Node environment
         shop: {
-            checkoutDomain: process.env.PUBLIC_CHECKOUT_DOMAIN || '',
-            storeDomain: process.env.PUBLIC_STORE_DOMAIN || '',
+            checkoutDomain: (process.env as any).PUBLIC_CHECKOUT_DOMAIN || '',
+            storeDomain: (process.env as any).PUBLIC_STORE_DOMAIN || '',
         },
         scriptSrc: [
             'self',
