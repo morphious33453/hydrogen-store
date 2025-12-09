@@ -1,0 +1,209 @@
+/* CAN-TAP Enterprise Design System */
+/* v1.0 - Teal/Cream Authority Theme */
+
+:root {
+    /* Core Palette */
+    --cantap-primary: #00897B;
+    /* Professional Teal */
+    --cantap-primary-dark: #004D40;
+    --cantap-accent: #FFA000;
+    /* Subtle Gold for specific highlights */
+
+    --cantap-bg-hero: linear-gradient(135deg, #E0F2F1 0%, #FFFFFF 100%);
+    --cantap-bg-light: #FAFAFA;
+    --cantap-bg-section: #F5F5F5;
+    --cantap-surface: #FFFFFF;
+
+    --cantap-text-main: #263238;
+    --cantap-text-light: #546E7A;
+
+    /* Layout Variables */
+    --section-padding: 5rem 2rem;
+    --container-width: 1200px;
+
+    /* Shadows - Subtle & Professional vs Brutalist */
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-float: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Clean Swiss Style */
+    color: var(--cantap-text-main);
+    background-color: var(--cantap-bg-light);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+.cantap-font-header {
+    font-family: 'Anton', impact, sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--cantap-primary-dark);
+}
+
+/* UTILITIES */
+.cantap-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.cantap-section {
+    padding: var(--section-padding);
+}
+
+.cantap-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .cantap-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.cantap-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .cantap-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* COMPONENT: CTA BUTTONS */
+.cantap-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cantap-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 1rem 2.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 0 var(--cantap-primary-dark);
+    /* Subtle 3D Click */
+}
+
+.cantap-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--cantap-primary-dark);
+}
+
+.cantap-cta:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--cantap-primary-dark);
+}
+
+/* COMPONENT: CARDS */
+.cantap-card {
+    background: var(--cantap-surface);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.cantap-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-float);
+}
+
+/* HEADER - STICKY */
+.cantap-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+/* HERO SECTION */
+.cantap-hero {
+    background: var(--cantap-bg-hero);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    /* Offset for header */
+}
+
+.cantap-hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.cantap-hero-sub {
+    font-size: 1.25rem;
+    color: var(--cantap-text-light);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+/* TRUST BAND (SCROLL) */
+.cantap-trust-band {
+    background: #ffffff;
+    padding: 2rem 0;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.cantap-trust-scroller {
+    display: flex;
+    gap: 4rem;
+    animation: scroll 30s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* PRICING */
+.cantap-pricing-highlight {
+    border: 2px solid var(--cantap-primary);
+    position: relative;
+}
+
+.cantap-pricing-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cantap-primary);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
