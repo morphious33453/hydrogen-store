@@ -1,5 +1,5 @@
 {
-    "buildCommand": "cross-env DEPLOY_TARGET=vercel shopify hydrogen build --codegen && rm -rf build && mv dist build",
+    "buildCommand": "npm run build:vercel",
     "devCommand": "npm run dev",
     "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
     "framework": "remix",
