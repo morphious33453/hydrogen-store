@@ -5,7 +5,11 @@ import { vitePlugin as remix } from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { vercelPreset } from '@vercel/remix/vite';
 
-const isVercel = process.env.DEPLOY_TARGET === 'vercel';
+const env = process.env as unknown as { DEPLOY_TARGET?: string };
+const isVercel = env.DEPLOY_TARGET === 'vercel';
+
+console.log('Build Target:', env.DEPLOY_TARGET);
+console.log('isVercel:', isVercel);
 
 export default defineConfig({
   plugins: [
@@ -14,11 +18,12 @@ export default defineConfig({
     !isVercel && oxygen(),
     remix({
       // Use distinct entry file for Vercel
-      serverBuildFile: isVercel ? 'index.js' : 'index.js',
+      serverBuildFile: 'index.js',
       // preset handles the server entry point automatically or we configure it
       presets: [
         hydrogen.preset(),
-        isVercel && vercelPreset(),
+        // Explicitly include Verce preset if target is vercel
+        isVercel ? vercelPreset() : null,
       ].filter(Boolean),
       future: {
         v3_fetcherPersist: true,
