@@ -17,8 +17,7 @@ import { getLocaleFromRequest } from '~/lib/utils';
 /**
  * Export a fetch handler in module format.
  */
-export default createRequestHandler({
-    build: remixBuild,
+export default createRequestHandler(remixBuild, {
     mode: process.env.NODE_ENV,
     getLoadContext: async (request) => {
 
