@@ -1,6 +1,6 @@
 import { RemixServer } from '@remix-run/react';
 import type { EntryContext } from '@shopify/remix-oxygen';
-import { isbot } from 'isbot';
+import isbot from 'isbot';
 import { renderToPipeableStream } from 'react-dom/server';
 import { PassThrough } from 'stream';
 import { createContentSecurityPolicy } from '@shopify/hydrogen';
