@@ -25,8 +25,10 @@ export default createRequestHandler(remixBuild, {
         const env = process.env as any;
 
         // 2. Session: Create AppSession
+        // Iterate on SESSION_SECRET: Provide a default if missing to prevent boot crashes
+        const sessionSecret = env.SESSION_SECRET || 'default-secret-for-vercel-deployment';
         if (!env.SESSION_SECRET) {
-            throw new Error('SESSION_SECRET environment variable is not set');
+            console.warn('SESSION_SECRET is not set. Using default secret.');
         }
 
         // Note: Vercel doesn't use 'caches' API in the same way as Workers in Node mode.
@@ -39,7 +41,7 @@ export default createRequestHandler(remixBuild, {
         // Cast request to any to bypass VercelRequest vs Request conflict
         const req = request as any;
 
-        const session = await AppSession.init(req, [env.SESSION_SECRET]);
+        const session = await AppSession.init(req, [sessionSecret]);
 
         // 3. Storefront: Create Client
         const { storefront } = createStorefrontClient({
