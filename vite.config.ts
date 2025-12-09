@@ -3,6 +3,7 @@ import { hydrogen } from '@shopify/hydrogen/vite';
 import { oxygen } from '@shopify/mini-oxygen/vite';
 import { vitePlugin as remix } from '@remix-run/dev';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { vercelPreset } from '@vercel/remix/vite';
 
 const isVercel = process.env.DEPLOY_TARGET === 'vercel';
 
@@ -14,11 +15,11 @@ export default defineConfig({
     remix({
       // Use distinct entry file for Vercel
       serverBuildFile: isVercel ? 'index.js' : 'index.js',
-      // 'server' option overrides the default server entry (server.ts)
-      server: isVercel ? './server.vercel.ts' : undefined,
+      // preset handles the server entry point automatically or we configure it
       presets: [
         hydrogen.preset(),
-      ],
+        isVercel && vercelPreset(),
+      ].filter(Boolean),
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
