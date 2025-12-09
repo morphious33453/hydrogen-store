@@ -21,9 +21,9 @@ export default defineConfig({
       serverBuildFile: 'index.js',
       // preset handles the server entry point automatically or we configure it
       presets: [
-        hydrogen.preset(),
-        // Explicitly include Verce preset if target is vercel
-        isVercel ? vercelPreset() : null,
+        // On Vercel, use vercelPreset (which handles the server entry text).
+        // On Oxygen/other, use hydrogen.preset (which handles Oxygen entry).
+        isVercel ? vercelPreset() : hydrogen.preset(),
       ].filter(Boolean),
       future: {
         v3_fetcherPersist: true,
