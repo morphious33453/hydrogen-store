@@ -15,8 +15,6 @@ export default defineConfig({
     remix({
       // Use distinct entry file for Vercel
       serverBuildFile: isVercel ? 'index.js' : 'index.js',
-      // Force 'build' directory for Vercel to match default expectations
-      buildDirectory: isVercel ? 'build' : 'dist',
       // preset handles the server entry point automatically or we configure it
       presets: [
         hydrogen.preset(),
