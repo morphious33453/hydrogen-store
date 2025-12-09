@@ -18,7 +18,7 @@ export default defineConfig({
     !isVercel && oxygen(),
     remix({
       // Use distinct entry file for Vercel
-      serverBuildFile: 'index.js',
+      serverBuildFile: 'app/entry.vercel.tsx',
       // preset handles the server entry point automatically or we configure it
       presets: [
         // On Vercel, use vercelPreset (which handles the server entry text).
