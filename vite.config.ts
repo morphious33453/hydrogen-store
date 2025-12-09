@@ -17,8 +17,8 @@ export default defineConfig({
     // Only run Oxygen plugin if NOT deploying to Vercel
     !isVercel && oxygen(),
     remix({
-      // Use distinct entry file for Vercel
-      serverBuildFile: 'app/entry.vercel.tsx',
+      // Use the custom Vercel server adapter (handles Context & Hydrogen)
+      serverBuildFile: 'server.vercel.ts',
       // preset handles the server entry point automatically or we configure it
       presets: [
         // On Vercel, use vercelPreset (which handles the server entry text).
@@ -34,6 +34,12 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  resolve: {
+    alias: {
+      // Vital: Swap the Oxygen entry point for the Node/Vercel one during build
+      '~/entry.server': isVercel ? './app/entry.vercel.tsx' : './app/entry.server.tsx',
+    },
+  },
   ssr: {
     optimizeDeps: {
       include: ['typographic-base'],

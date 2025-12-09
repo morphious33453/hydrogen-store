@@ -1,7 +1,7 @@
 // @ts-ignore
 // Virtual entry point for the app
 import * as remixBuild from 'virtual:remix/server-build';
-import { createRequestHandler } from '@remix-run/vercel';
+import { createRequestHandler } from '@vercel/remix';
 import {
     cartGetIdDefault,
     cartSetIdDefault,
